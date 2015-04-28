@@ -31,27 +31,6 @@ def init():
     glDepthFunc(GL_LEQUAL)
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST)
 
-def initimu():
-    SETTINGS_FILE = "RTIMULib"
-    if not os.path.exists(SETTINGS_FILE + ".ini"):
-        print("Settings file does not exist, will be created")
-
-    s = RTIMU.Settings(SETTINGS_FILE)
-    imu = RTIMU.RTIMU(s)
-
-    print("IMU Name: " + imu.IMUName())
-
-    if (not imu.IMUInit()):
-        print("IMU Init Failed");
-        sys.exit(1)
-    else:
-        print("IMU Init Succeeded");
-
-    poll_interval = imu.IMUGetPollInterval()
-    print("Recommended Poll Interval: %dmS\n" % poll_interval)
-
-    return (imu, poll_interval)
-
 def drawText(position, string):
     font=pygame.font.Font(None, 30)
     #font=pygame.font.SysFont("Courier", 18, True)
@@ -69,7 +48,23 @@ def run():
     cube = Cube((0.0, 0.0, 0.0))
     axis = Axis((0.0, 0.0, 0.0))
 
-    imu, poll_interval = initimu()
+    SETTINGS_FILE = "RTIMULib"
+    if not os.path.exists(SETTINGS_FILE + ".ini"):
+        print("Settings file does not exist, will be created")
+
+    s = RTIMU.Settings(SETTINGS_FILE)
+    imu = RTIMU.RTIMU(s)
+
+    print("IMU Name: " + imu.IMUName())
+
+    if (not imu.IMUInit()):
+        print("IMU Init Failed");
+        sys.exit(1)
+    else:
+        print("IMU Init Succeeded");
+
+    poll_interval = imu.IMUGetPollInterval()
+    print("Recommended Poll Interval: %dmS\n" % poll_interval)
 
     while True:
         for event in pygame.event.get():
