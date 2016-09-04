@@ -52,7 +52,7 @@ for i in range(3):
 def DataGenerator():
   global values,wScale2
 
-  data = l3d4200d.readList()
+  data = l3d4200d.read()
   for i in range(3):
     values[i].append(data[i])
   root.after(int(wScale2['to'])-wScale2.get(),DataGenerator)
