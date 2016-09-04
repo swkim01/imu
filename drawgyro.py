@@ -78,8 +78,8 @@ def _quit():
 button = Tkinter.Button(master=root, text='Quit', command=_quit)
 button.pack(side=Tkinter.BOTTOM)
 
-wScale = Tkinter.Scale(master=root,label="View Width:", from_=3, to=1000,sliderlength=30,length=ax1.get_frame().get_window_extent().width, orient=Tkinter.HORIZONTAL)
-wScale2 = Tkinter.Scale(master=root,label="Generation Speed:", from_=1, to=1000,sliderlength=30,length=ax1.get_frame().get_window_extent().width, orient=Tkinter.HORIZONTAL)
+wScale = Tkinter.Scale(master=root,label="View Width:", from_=3, to=1000,sliderlength=30,length=ax1.patch.get_window_extent().width, orient=Tkinter.HORIZONTAL)
+wScale2 = Tkinter.Scale(master=root,label="Generation Speed:", from_=1, to=1000,sliderlength=30,length=ax1.patch.get_window_extent().width, orient=Tkinter.HORIZONTAL)
 wScale2.pack(side=Tkinter.BOTTOM)
 wScale.pack(side=Tkinter.BOTTOM)
 
