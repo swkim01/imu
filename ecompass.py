@@ -57,8 +57,8 @@ polygon_item2 = canvas.create_polygon(triangle2, fill="blue")
 
 def update():
 
+  sensor.read()
   angle_deg = sensor.calcTiltHeading()
-  #sensor.read()
   #data = mpu.read()
   #angle_deg = sensor.calcTiltHeading(data[0], data[1], data[2])
 
